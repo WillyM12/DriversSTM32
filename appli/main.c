@@ -19,7 +19,7 @@ int main(void)
     // Clock TIM2 = 42MHz
     TIM2->PSC = 0x0; // no prescaler, timer counts up in sync with the peripheral clock
     TIM2->DIER |= TIM_DIER_UIE; // enable update interrupt
-    TIM2->ARR = 419999; // autoreload = (time/(prescaler/clock))-1 here time = 1000ms
+    TIM2->ARR = 41999; // autoreload = (time/(prescaler/clock))-1 here time = 1ms
     TIM2->CR1 |= TIM_CR1_ARPE | TIM_CR1_CEN; // autoreload on, counter enabled
     TIM2->EGR = 1; // trigger update event to reload timer registers
      
@@ -40,12 +40,14 @@ int main(void)
     while(1)
     {
 	    button_event = BUTTON_state_machine();
+        // if(button_event == BUTTON_EVENT_SHORT_PRESS) digitalToggle(GPIOD, 15);
+        // if(button_event == BUTTON_EVENT_LONG_PRESS) digitalToggle(GPIOD, 14);
 
         if(button_event == BUTTON_EVENT_SHORT_PRESS) sens = !sens;
 
         if(button_event == BUTTON_EVENT_LONG_PRESS){
-            if(alarme != TIME2000) alarme++;
-            else alarme = TIME250;
+            alarme++;
+            if(alarme > TIME2000) alarme = TIME250;
         }
 
         codeError = chenillard(sens, alarme);

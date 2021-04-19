@@ -17,6 +17,8 @@
 #define CONFIG_ERROR 24
 #define CHENILL_ERROR 25
 
+#define BOUNCE_DELAY 2 //*10ms
+
 int pinMode(GPIO_TypeDef *port, uint8_t numBit, uint8_t mode);
 int digitalWrite(GPIO_TypeDef *port, uint8_t numBit, uint8_t value);
 int digitalToggle(GPIO_TypeDef *port, uint8_t numBit);

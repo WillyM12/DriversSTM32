@@ -4,7 +4,6 @@
 
 static volatile uint32_t t = 0;
 
-
 int detection_bp_front(front_e front, uint8_t filtre)
 {
     int res = 0;
@@ -53,8 +52,8 @@ button_event_e BUTTON_state_machine(void){
     button_event_e ret = BUTTON_EVENT_NONE;
     uint8_t current_button;
 
-    if(flag_10ms){
-        flag_10ms = 0;
+    if(flag_10ms[0]){
+        flag_10ms[0] = 0;
         digitalRead(GPIOA, 0, &current_button);
         switch (state)
         {
@@ -102,8 +101,11 @@ void TIM2_IRQHandler(void)
 	static uint32_t t10ms = 0;
     if (TIM2->SR & TIM_SR_UIF){
         t10ms = (t10ms + 1)%10;		//incrémentation de la variable t10ms (modulo 10 !)
-        if(!t10ms)
-            flag_10ms = 1; //toutes les 10ms, on lève ce flag.
+        if(!t10ms){
+            flag_10ms[0] = 1; //toutes les 10ms, on lève ce flag.
+            flag_10ms[1] = 1; //toutes les 10ms, on lève ce flag.
+        }
+            
         if(t)
             t--;
     }

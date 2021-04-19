@@ -85,27 +85,39 @@ void error(int codeError){
     switch (codeError)
     {
     case PORT_ERROR:
-        while(1){}
+        while(1){
+            digitalWrite(GPIOD, 15, ON);
+        }
         break;
 
     case PIN_ERROR:
-        while(1){}
+        while(1){
+            digitalWrite(GPIOD, 15, ON);
+        }
         break;
 
     case MODE_ERROR:
-        while(1){}
+        while(1){
+            digitalWrite(GPIOD, 15, ON);
+        }
         break;
 
     case VALUE_ERROR:
-        while(1){}
+        while(1){
+            digitalWrite(GPIOD, 15, ON);
+        }
         break;
 
     case CONFIG_ERROR:
-        while(1){}
+        while(1){
+            digitalWrite(GPIOD, 15, ON);
+        }
         break;
 
     case CHENILL_ERROR:
-        while(1){}
+        while(1){
+            digitalWrite(GPIOD, 15, ON);
+        }
         break;
     
     default:
