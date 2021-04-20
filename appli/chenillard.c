@@ -18,19 +18,19 @@ int chenillard(uint8_t sens, alarme_e alarme)
     switch (alarme)
     {
         case TIME250:
-            time = 50;
+            time = 25;
             break;
         
         case TIME500:
-            time = 100;
+            time = 50;
             break;
         
         case TIME1000:
-            time = 200;
+            time = 100;
             break;
 
         case TIME2000:
-            time = 400;
+            time = 200;
             break;
 
         default:

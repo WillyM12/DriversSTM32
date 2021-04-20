@@ -16,10 +16,10 @@ int main(void)
 
     NVIC->ISER[0] |= 1UL << (TIM2_IRQn); // enable the TIM2 IRQ
     
-    // Clock TIM2 = 42MHz
+    // Clock TIM2 = 84MHz
     TIM2->PSC = 0x0; // no prescaler, timer counts up in sync with the peripheral clock
     TIM2->DIER |= TIM_DIER_UIE; // enable update interrupt
-    TIM2->ARR = 41999; // autoreload = (time/(prescaler/clock))-1 here time = 1ms
+    TIM2->ARR = 83999; // autoreload = (time/(prescaler/clock))-1 here time = 1ms
     TIM2->CR1 |= TIM_CR1_ARPE | TIM_CR1_CEN; // autoreload on, counter enabled
     TIM2->EGR = 1; // trigger update event to reload timer registers
      

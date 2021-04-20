@@ -1,7 +1,7 @@
 #ifndef BP_USER_H
 #define BP_USER_H
 
-#define LONG_PRESS_DURATION	2000 //1s
+#define LONG_PRESS_DURATION	1000 //1s
 
 typedef enum {none, rising, falling, both} front_e;
 
