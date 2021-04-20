@@ -4,14 +4,14 @@
 #include "bp_user.h"
 
 static volatile int ledOn = 14;
-static volatile int cpt10ms = 0;
+static volatile int cpt = 0;
 
 int chenillard(uint8_t sens, alarme_e alarme)
 {
     int time; 
 
     if(flag_10ms[1]){
-        cpt10ms++;
+        cpt++;
         flag_10ms[1] = 0;
     } 
     
@@ -38,7 +38,7 @@ int chenillard(uint8_t sens, alarme_e alarme)
             break;
     }
     
-    if(cpt10ms == time){
+    if(cpt == time){
         digitalWrite(GPIOD, ledOn, OFF);
         if(sens == 1){
             ledOn++;
@@ -49,7 +49,7 @@ int chenillard(uint8_t sens, alarme_e alarme)
             if(ledOn == 11) ledOn = 15;   
         }
         digitalWrite(GPIOD, ledOn, ON);
-        cpt10ms = 0;
     }
+    if(cpt >= time) cpt=0;
     return 0;
 }

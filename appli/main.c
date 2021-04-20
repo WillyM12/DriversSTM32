@@ -40,8 +40,6 @@ int main(void)
     while(1)
     {
 	    button_event = BUTTON_state_machine();
-        // if(button_event == BUTTON_EVENT_SHORT_PRESS) digitalToggle(GPIOD, 15);
-        // if(button_event == BUTTON_EVENT_LONG_PRESS) digitalToggle(GPIOD, 14);
 
         if(button_event == BUTTON_EVENT_SHORT_PRESS) sens = !sens;
 
